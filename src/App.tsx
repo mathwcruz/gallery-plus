@@ -1,3 +1,7 @@
+import { useForm } from "react-hook-form";
+
+import SearchIcon from "./assets/icons/search.svg?react";
+
 import Button from "./components/button";
 import ButtonIcon from "./components/button-icon";
 import ChevronLeftIcon from "./assets/icons/chevron-left.svg?react";
@@ -5,8 +9,13 @@ import ChevronRightIcon from "./assets/icons/chevron-right.svg?react";
 import Badge from "./components/badge";
 import Alert from "./components/alert";
 import Divider from "./components/divider";
+import { TextInput } from "./components/text-input";
+import { Checkbox } from "./components/checkbox";
+import { SingleFileInput } from "./components/single-file-input";
 
 export default function App() {
+	const form = useForm()
+
 	return (
 		<div className="grid gap-7 p-6">
 			<div className="flex gap-3">
@@ -47,6 +56,18 @@ export default function App() {
 
 			<div>
 				<Divider />
+			</div>
+
+			<div>
+				<TextInput placeholder="Buscar foto" icon={SearchIcon} />
+			</div>
+
+			<div>
+				<Checkbox />
+			</div>
+
+			<div>
+				<SingleFileInput form={form} {...form.register("file")} />
 			</div>
 		</div>
 	);
