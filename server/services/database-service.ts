@@ -28,7 +28,7 @@ export class DatabaseService {
       const initialData: Database = {
         photos: [],
         albums: [],
-        photosOnAlbums: []
+        photosOnAlbums: [],
       };
       await this.writeDatabase(initialData);
     }
@@ -43,7 +43,7 @@ export class DatabaseService {
       const emptyDb: Database = {
         photos: [],
         albums: [],
-        photosOnAlbums: []
+        photosOnAlbums: [],
       };
       await this.writeDatabase(emptyDb);
       return emptyDb;
@@ -58,4 +58,4 @@ export class DatabaseService {
       throw new Error('Failed to write to database');
     }
   }
-} 
+}
