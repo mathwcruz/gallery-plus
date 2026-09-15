@@ -14,49 +14,16 @@ import {
 import Button from '../../../components/primitives/button';
 import { TextInput } from '../../../components/primitives/text-input';
 import Text from '../../../components/primitives/text';
-import type { Photo } from '../../photos/models/photo';
 import Skeleton from '../../../components/primitives/skeleton';
 import { SelectablePhotoImage } from '../../photos/components/selectable-photo-image';
+import { usePhotos } from '../../photos/hooks/use-photos';
 
 interface NewAlbumDialogProps {
   trigger: ReactNode;
 }
 
 export function NewAlbumDialog({ trigger }: NewAlbumDialogProps) {
-  const isLoadingPhotos = false;
-
-  const photos: Photo[] = [
-    {
-      id: '123',
-      title: 'Photo',
-      imageId: 'square-breakfast.png',
-      albums: [
-        {
-          id: '546',
-          title: 'Album 1',
-        },
-        {
-          id: '987',
-          title: 'Album 2',
-        },
-      ],
-    },
-    {
-      id: '321',
-      title: 'Photo 2',
-      imageId: 'wide-cafeteria.png',
-      albums: [
-        {
-          id: '546',
-          title: 'Album 1',
-        },
-        {
-          id: '384',
-          title: 'Album 3',
-        },
-      ],
-    },
-  ];
+  const { photos, isLoadingPhotos } = usePhotos();
 
   function handleTogglePhoto(selected: boolean, photoId: string) {
     console.log({ selected, photoId });
@@ -82,7 +49,7 @@ export function NewAlbumDialog({ trigger }: NewAlbumDialogProps) {
                 {photos?.map((photo) => (
                   <SelectablePhotoImage
                     key={photo.id}
-                    src={`/images/${photo.imageId}`}
+                    src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`}
                     title={photo.title}
                     imageClassName="w-20 h-20"
                     onSelectImage={(selected: boolean) =>

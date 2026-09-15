@@ -9,6 +9,10 @@ import { AlbumsService } from './albums/albums-service';
 import { photosRoutes } from './photos/photos-routes';
 import { albumsRoutes } from './albums/albums-routes';
 
+// Simulated API latency — useful for testing loading states on the frontend.
+// Defaults to 1500ms; set API_DELAY_MS=0 to disable.
+const apiDelayMs = parseInt(process.env.API_DELAY_MS || '1500');
+
 // Start server
 const start = async () => {
   const fastify = Fastify({
@@ -33,6 +37,15 @@ const start = async () => {
     root: resolve(process.cwd(), 'data', 'images'),
     prefix: '/images/',
   });
+
+  // Delay API responses to simulate latency (useful for testing loading
+  // states). Skips /images/* so static files are served without delay.
+  if (apiDelayMs > 0) {
+    fastify.addHook('onRequest', async (request) => {
+      if (request.url.startsWith('/images/')) return;
+      await new Promise((done) => setTimeout(done, apiDelayMs));
+    });
+  }
 
   // Initialize services
   const databaseService = new DatabaseService();

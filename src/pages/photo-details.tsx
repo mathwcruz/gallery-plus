@@ -67,24 +67,7 @@ export function PhotoDetails() {
             Álbuns
           </Text>
 
-          <SelectableAlbumList
-            photo={photo}
-            albums={[
-              {
-                id: '546',
-                title: 'Album 1',
-              },
-              {
-                id: '987',
-                title: 'Album 2',
-              },
-              {
-                id: '384',
-                title: 'Album 3',
-              },
-            ]}
-            loading={isLoadingPhoto}
-          />
+          <SelectableAlbumList photo={photo} />
         </div>
       </div>
     </Container>

@@ -3,19 +3,15 @@ import Divider from '../../../components/primitives/divider';
 import Skeleton from '../../../components/primitives/skeleton';
 import Text from '../../../components/primitives/text';
 import type { Photo } from '../../photos/models/photo';
-import type { Album } from '../models/album';
+import { useAlbums } from '../hooks/use-albums';
 
 interface SelectableAlbumListProps {
-  loading?: boolean;
-  albums: Album[];
   photo: Photo;
 }
 
-export function SelectableAlbumList({
-  albums,
-  photo,
-  loading,
-}: SelectableAlbumListProps) {
+export function SelectableAlbumList({ photo }: SelectableAlbumListProps) {
+  const { albums, isLoadingAlbums } = useAlbums();
+
   function isChecked(albumId: string) {
     return photo?.albums?.some((album) => album.id === albumId);
   }
@@ -36,7 +32,7 @@ export function SelectableAlbumList({
 
   return (
     <ul className="flex flex-col gap-4">
-      {!loading && albums.length > 0 && (
+      {!isLoadingAlbums && albums.length > 0 && (
         <>
           {albums.map((album, index) => (
             <li key={album.id}>
@@ -57,7 +53,7 @@ export function SelectableAlbumList({
         </>
       )}
 
-      {loading &&
+      {isLoadingAlbums &&
         Array.from({ length: 5 }).map((_, index) => (
           <li key={`albums-list-${index}`}>
             <Skeleton className="h-10" />
