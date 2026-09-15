@@ -52,7 +52,7 @@ export function AlbumFilter({
           <>
             {Array.from({ length: 4 }).map((_, index) => (
               <Skeleton
-                className="w-28 h-7"
+                className="h-7 w-28"
                 key={`album-buttom-loading-${index}`}
               />
             ))}

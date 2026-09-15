@@ -1,15 +1,15 @@
 import { useWatch } from 'react-hook-form';
 import { tv, type VariantProps } from 'tailwind-variants';
 
-import UploadFileIcon from '../assets/icons/upload-file.svg?react';
-import FileImageIcon from '../assets/icons/image.svg?react';
+import UploadFileIcon from '../../assets/icons/upload-file.svg?react';
+import FileImageIcon from '../../assets/icons/image.svg?react';
 
 import Icon from './icon';
 import Text, { textVariants } from './text';
 import { useMemo, type ComponentProps, type ReactNode } from 'react';
 
 export const singleFileInputVariants = tv({
-  base: 'flex gap-1 transition flex-col items-center justify-center w-full border border-solid border-border-primary group-hover:border-border-active rounded-lg',
+  base: 'flex w-full flex-col items-center justify-center gap-1 rounded-lg border border-solid border-border-primary transition group-hover:border-border-active',
   variants: {
     size: {
       md: 'px-5 py-6',
@@ -24,7 +24,7 @@ export const singleFileInputIconVariants = tv({
   base: 'fill-placeholder',
   variants: {
     size: {
-      md: 'w-8 h-8',
+      md: 'h-8 w-8',
     },
   },
   defaultVariants: {
@@ -80,13 +80,13 @@ export function SingleFileInput({
   }
 
   return (
-    <div className="relative w-full group cursor-pointer">
+    <div className="group relative w-full cursor-pointer">
       {!formFile || !isValidFile() ? (
         <>
-          <div className="w-full relative group cursor-pointer">
+          <div className="group relative w-full cursor-pointer">
             <input
               type="file"
-              className="absolute top-0 right-0 w-full h-full opacity-0 cursor-pointer"
+              className="absolute top-0 right-0 h-full w-full cursor-pointer opacity-0"
               {...props}
             />
 
@@ -100,7 +100,7 @@ export function SingleFileInput({
 
               <Text
                 variant="label-medium"
-                className="text-placeholder text-center"
+                className="text-center text-placeholder"
               >
                 Arraste o arquivo aqui
                 <br />
@@ -109,7 +109,7 @@ export function SingleFileInput({
             </div>
           </div>
 
-          <div className="flex flex-col gap-1 mt-1">
+          <div className="mt-1 flex flex-col gap-1">
             <Text variant="label-small" className="text-accent-red">
               {formFile &&
                 !isValidExtension() &&
@@ -127,11 +127,11 @@ export function SingleFileInput({
         <>
           {replaceBy}
 
-          <div className="flex gap-3 items-center border border-solid border-border-primary mt-5 p-3 rounded">
-            <Icon svg={FileImageIcon} className="fill-white w-6 h-6" />
+          <div className="mt-5 flex items-center gap-3 rounded border border-solid border-border-primary p-3">
+            <Icon svg={FileImageIcon} className="h-6 w-6 fill-white" />
 
             <div className="flex flex-col">
-              <div className="truncate max-w-80">
+              <div className="max-w-80 truncate">
                 <Text variant="label-medium" className="text-placeholder">
                   {formFile.name}
                 </Text>
@@ -142,7 +142,7 @@ export function SingleFileInput({
                   type="button"
                   className={textVariants({
                     variant: 'label-small',
-                    className: 'text-accent-red cursor-pointer hover:underline',
+                    className: 'cursor-pointer text-accent-red hover:underline',
                   })}
                   onClick={() => {
                     form.setValue(name, undefined);

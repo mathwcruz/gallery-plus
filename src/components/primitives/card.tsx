@@ -2,9 +2,7 @@ import { type VariantProps, tv } from 'tailwind-variants';
 import React from 'react';
 
 export const cardVariants = tv({
-  base: `
-		rounded transition
-	`,
+  base: `rounded transition`,
   variants: {
     variant: {
       default: 'border border-solid border-border-primary bg-transparent',

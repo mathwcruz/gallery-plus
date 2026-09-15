@@ -14,13 +14,13 @@ export function PhotoList({ photos, loading }: PhotoListProps) {
       <Text
         variant="paragraph-large"
         as="div"
-        className="flex items-center justify-end text-accent-span gap-1"
+        className="flex items-center justify-end gap-1 text-accent-span"
       >
         Total:{' '}
         {!loading ? (
           <div>{photos.length}</div>
         ) : (
-          <Skeleton className="w-6 h-6" />
+          <Skeleton className="h-6 w-6" />
         )}
       </Text>
 
@@ -45,7 +45,7 @@ export function PhotoList({ photos, loading }: PhotoListProps) {
       )}
 
       {!loading && photos.length === 0 && (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex h-full items-center justify-center">
           <Text variant="paragraph-large">Nenhuma foto disponível</Text>
         </div>
       )}

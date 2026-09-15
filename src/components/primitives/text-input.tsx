@@ -9,7 +9,7 @@ export const textInputContainerVariants = tv({
 });
 
 export const textInputWrapperVariants = tv({
-  base: 'border border-solid border-border-primary focus:border-border-active bg-transparent rounded flex items-center gap-3',
+  base: 'flex items-center gap-3 rounded border border-solid border-border-primary bg-transparent focus:border-border-active',
   variants: {
     size: {
       md: 'h-10 p-3',
@@ -37,7 +37,7 @@ export const textInputIconVariants = tv({
 });
 
 export const textInputVariants = tv({
-  base: 'bg-transparent outline-none placeholder:text-text-placeholder text-accent-paragraph flex-1',
+  base: 'placeholder:text-text-placeholder flex-1 bg-transparent text-accent-paragraph outline-none',
   variants: {},
   defaultVariants: {},
 });

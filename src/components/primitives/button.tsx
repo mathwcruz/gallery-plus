@@ -6,23 +6,20 @@ import SpinnerIcon from '../../assets/icons/spinner.svg?react';
 import cx from 'classnames';
 
 export const buttonVariants = tv({
-  base: 'flex items-center justify-center cursor-pointer transition rounded group gap-1',
+  base: 'group flex cursor-pointer items-center justify-center gap-1 rounded transition',
   variants: {
     variant: {
       primary: 'bg-accent-brand hover:bg-accent-brand-light',
       secondary: 'bg-background-secondary hover:bg-background-tertiary',
       destructive: 'bg-background-secondary hover:bg-background-tertiary',
-      ghost: `
-					bg-transparent border border-solid border-border-primary 
-				text-accent-paragraph hover:border-background-secondary
-				`,
+      ghost: `border border-solid border-border-primary bg-transparent text-accent-paragraph hover:border-background-secondary`,
     },
     size: {
-      sm: 'h-7 py-1 px-3',
-      md: 'h-10 py-2 pl-3 pr-3',
+      sm: 'h-7 px-3 py-1',
+      md: 'h-10 py-2 pr-3 pl-3',
     },
     disabled: {
-      true: 'opacity-50 pointer-events-none',
+      true: 'pointer-events-none opacity-50',
     },
     handling: {
       true: 'pointer-events-none',
@@ -64,11 +61,11 @@ export const buttonIconVariants = tv({
       ghost: 'fill-accent-paragraph',
     },
     size: {
-      sm: 'w-4 h-4',
-      md: 'w-6 h-6',
+      sm: 'h-4 w-4',
+      md: 'h-6 w-6',
     },
     handling: {
-      true: 'w-4 h-4',
+      true: 'h-4 w-4',
     },
   },
   defaultVariants: {

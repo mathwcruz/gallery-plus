@@ -4,6 +4,8 @@ import cx from 'classnames';
 
 import Logo from '../assets/images/galeria-plus-full-logo.svg?react';
 
+import { NewPhotoDialog } from '../contexts/photos/components/new-photo-dialog';
+import { NewAlbumDialog } from '../contexts/albums/components/new-album-dialog';
 import Button from './primitives/button';
 import Container from './primitives/container';
 import { PhotosSearch } from './photos-search';
@@ -16,7 +18,7 @@ export function MainHeader({ className, ...props }: MainHeaderProps) {
     <Container
       as="header"
       {...props}
-      className={cx('flex justify-between items-center gap-10', className)}
+      className={cx('flex items-center justify-between gap-10', className)}
     >
       <Link to="/">
         <Logo className="h-5" />
@@ -27,8 +29,11 @@ export function MainHeader({ className, ...props }: MainHeaderProps) {
       <Divider orientation="vertical" className="h-10" />
 
       <div className="flex items-center gap-3">
-        <Button>Nova foto</Button>
-        <Button variant="secondary">Crirar álbum</Button>
+        <NewPhotoDialog trigger={<Button>Nova foto</Button>} />
+
+        <NewAlbumDialog
+          trigger={<Button variant="secondary">Criar álbum</Button>}
+        />
       </div>
     </Container>
   );

@@ -2,9 +2,7 @@ import { tv, type VariantProps } from 'tailwind-variants';
 import Text from '../primitives/text';
 
 export const alertVariants = tv({
-  base: `
-    rounded-md py-3 px-5
-  `,
+  base: `rounded-md px-5 py-3`,
   variants: {
     variant: {
       info: 'bg-accent-brand/10',

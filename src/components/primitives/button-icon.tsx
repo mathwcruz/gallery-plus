@@ -1,10 +1,10 @@
 import React from 'react';
 import Icon from './icon';
 import { tv, type VariantProps } from 'tailwind-variants';
-import SpinnerIcon from '../assets/icons/spinner.svg?react';
+import SpinnerIcon from '../../assets/icons/spinner.svg?react';
 
 export const buttonIconVariants = tv({
-  base: 'inline-flex items-center justify-center cursor-pointer transition',
+  base: 'inline-flex cursor-pointer items-center justify-center transition',
   variants: {
     variant: {
       primary: 'bg-accent-brand hover:bg-accent-brand-light',
@@ -12,10 +12,10 @@ export const buttonIconVariants = tv({
       ghost: 'bg-transparent hover:bg-border-primary/20',
     },
     size: {
-      md: 'w-10 h-10 p-2 rounded',
+      md: 'h-10 w-10 rounded p-2',
     },
     disabled: {
-      true: 'opacity-50 pointer-events-none',
+      true: 'pointer-events-none opacity-50',
     },
     handling: {
       true: 'pointer-events-none',
@@ -37,7 +37,7 @@ export const buttonIconIconVariants = tv({
       ghost: 'fill-white',
     },
     size: {
-      md: 'w-6 h-6',
+      md: 'h-6 w-6',
     },
   },
   defaultVariants: {

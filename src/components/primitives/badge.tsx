@@ -10,11 +10,11 @@ export const badgeVariants = tv({
     variant: {
       none: '',
       ghost:
-        'bg-transparent border border-solid border-border-primary text-accent-paragraph',
+        'border border-solid border-border-primary bg-transparent text-accent-paragraph',
     },
     size: {
-      xs: 'py-0.5 px-2',
-      sm: 'py-1 px-3',
+      xs: 'px-2 py-0.5',
+      sm: 'px-3 py-1',
     },
   },
   defaultVariants: {
@@ -36,8 +36,8 @@ export const badgeTextVariants = tv({
 export const badgeSkeletonVariants = tv({
   variants: {
     size: {
-      xs: 'w-12 h-[1.375rem]',
-      sm: 'w-16 h-[1.875rem]',
+      xs: 'h-[1.375rem] w-12',
+      sm: 'h-[1.875rem] w-16',
     },
   },
   defaultVariants: {

@@ -2,7 +2,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import type { ComponentProps } from 'react';
 import cn from 'classnames';
 
-import XIcon from '../assets/icons/x.svg?react';
+import XIcon from '../../assets/icons/x.svg?react';
 
 import Card from './card';
 import Text from './text';
@@ -20,14 +20,7 @@ export function DialogOverlay({
   return (
     <DialogPrimitive.Overlay
       className={cn(
-        `
-            fixed inset-0 z-50 bg-background-secondary/60
-            backdrop-blur-sm
-            data-[state=open]:animate-in
-            data-[state=open]:fade-in-0
-            data-[state=closed]:animate-out
-            data-[state=closed]:fade-out-0
-            `,
+        `fixed inset-0 z-50 bg-background-secondary/60 backdrop-blur-sm data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0`,
         className,
       )}
       {...props}
@@ -48,16 +41,7 @@ export function DialogContent({
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          `
-                fixed w-full max-w-lg left-[50%] top-[50%] z-60
-                translate-x-[-50%] translate-y-[-50%] 
-                data-[state=open]:animate-in
-                data-[state=open]:fade-in-0
-                data-[state=open]:slide-in-from-bottom-[48%]
-                data-[state=closed]:animate-out
-                data-[state=closed]:fade-out-0
-                data-[state=closed]:slide-out-to-bottom-[48%]
-                `,
+          `fixed top-[50%] left-[50%] z-60 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-bottom-[48%] data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-bottom-[48%]`,
           className,
         )}
         {...props}

@@ -1,14 +1,14 @@
 import { tv, type VariantProps } from 'tailwind-variants';
 
 export const dividerVariants = tv({
-  base: 'w-full h-px ',
+  base: 'h-px w-full',
   variants: {
     variant: {
       default: 'bg-border-primary',
     },
     orientation: {
-      horizontal: 'w-full h-px',
-      vertical: 'w-px h-full',
+      horizontal: 'h-px w-full',
+      vertical: 'h-full w-px',
     },
   },
   defaultVariants: {
