@@ -2,6 +2,7 @@ import type { ComponentProps } from 'react';
 import cx from 'classnames';
 
 import type { Album } from '../models/album';
+import { usePhotos } from '../../photos/hooks/use-photos';
 import Button from '../../../components/primitives/button';
 import Text from '../../../components/primitives/text';
 import Skeleton from '../../../components/primitives/skeleton';
@@ -17,6 +18,8 @@ export function AlbumFilter({
   className,
   ...props
 }: AlbumFilterProps) {
+  const { filters } = usePhotos();
+
   return (
     <div
       className={cx('flex items-center gap-3.5 overflow-x-auto', className)}
@@ -29,9 +32,10 @@ export function AlbumFilter({
           <>
             <Button
               type="button"
-              variant="primary"
+              variant={filters.albumId === null ? 'primary' : 'ghost'}
               size="sm"
               className="cursor-pointer"
+              onClick={() => filters.setAlbumId(null)}
             >
               Todos
             </Button>
@@ -40,9 +44,10 @@ export function AlbumFilter({
               <Button
                 key={album.id}
                 type="button"
-                variant="ghost"
+                variant={filters.albumId === album.id ? 'primary' : 'ghost'}
                 size="sm"
                 className="cursor-pointer"
+                onClick={() => filters.setAlbumId(album.id)}
               >
                 {album.title}
               </Button>

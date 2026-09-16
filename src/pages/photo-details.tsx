@@ -1,4 +1,4 @@
-// import { useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 import Container from '../components/primitives/container';
 import Text from '../components/primitives/text';
@@ -7,47 +7,39 @@ import { PhotoNavigator } from '../contexts/photos/components/photo-navigator';
 import { ImagePreview } from '../components/image-preview';
 import Button from '../components/primitives/button';
 import { SelectableAlbumList } from '../contexts/albums/components/selectable-album-list';
+import {
+  usePhoto,
+  type PhotoDetailResponse,
+} from '../contexts/photos/hooks/use-photo';
 
 export function PhotoDetails() {
-  // const { photo_id } = useParams();
-
-  // only for demonstration purposes
-  const isLoadingPhoto = false;
-  const photo = {
-    id: '123',
-    title: 'Photo',
-    imageId: 'square-breakfast.png',
-    albums: [
-      {
-        id: '546',
-        title: 'Album 1',
-      },
-      {
-        id: '987',
-        title: 'Album 2',
-      },
-    ],
-  };
+  const { photo_id } = useParams();
+  const { photo, isLoadingPhoto, previousPhotoId, nextPhotoId } =
+    usePhoto(photo_id);
 
   return (
     <Container>
       <header className="mb-8 flex items-center justify-between gap-8">
         {!isLoadingPhoto ? (
           <Text variant="heading-large" as="h2">
-            {photo.title}
+            {photo?.title}
           </Text>
         ) : (
           <Skeleton className="h-8 w-48" />
         )}
 
-        <PhotoNavigator loading={isLoadingPhoto} />
+        <PhotoNavigator
+          prevPhotoId={previousPhotoId}
+          nextPhotoId={nextPhotoId}
+          loading={isLoadingPhoto}
+        />
       </header>
 
       <div className="grid grid-cols-[21rem_1fr] gap-24">
         <div className="space-y-3">
           {!isLoadingPhoto ? (
             <ImagePreview
-              src={`/images/${photo?.imageId}`}
+              src={`${import.meta.env.VITE_IMAGES_URL}/${photo?.imageId}`}
               title={photo?.title}
               imageClassName="h-84"
             />
@@ -67,7 +59,7 @@ export function PhotoDetails() {
             Álbuns
           </Text>
 
-          <SelectableAlbumList photo={photo} />
+          <SelectableAlbumList photo={photo || ({} as PhotoDetailResponse)} />
         </div>
       </div>
     </Container>

@@ -8,7 +8,6 @@ import ArrowRightIcon from '../../../assets/icons/chevron-right.svg?react';
 import Skeleton from '../../../components/primitives/skeleton';
 import ButtonIcon from '../../../components/primitives/button-icon';
 import Button from '../../../components/primitives/button';
-
 interface PhotoNavigatorProps extends ComponentProps<'div'> {
   prevPhotoId?: string;
   nextPhotoId?: string;

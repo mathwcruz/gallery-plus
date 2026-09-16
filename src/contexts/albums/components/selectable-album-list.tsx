@@ -2,11 +2,11 @@ import { Checkbox } from '../../../components/primitives/checkbox';
 import Divider from '../../../components/primitives/divider';
 import Skeleton from '../../../components/primitives/skeleton';
 import Text from '../../../components/primitives/text';
-import type { Photo } from '../../photos/models/photo';
+import type { PhotoDetailResponse } from '../../photos/hooks/use-photo';
 import { useAlbums } from '../hooks/use-albums';
 
 interface SelectableAlbumListProps {
-  photo: Photo;
+  photo: PhotoDetailResponse;
 }
 
 export function SelectableAlbumList({ photo }: SelectableAlbumListProps) {
