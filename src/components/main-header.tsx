@@ -4,12 +4,12 @@ import cx from 'classnames';
 
 import Logo from '../assets/images/galeria-plus-full-logo.svg?react';
 
-import { NewPhotoDialog } from '../contexts/photos/components/new-photo-dialog';
-import { NewAlbumDialog } from '../contexts/albums/components/new-album-dialog';
 import Button from './primitives/button';
 import Container from './primitives/container';
 import { PhotosSearch } from './photos-search';
 import Divider from './primitives/divider';
+import { NewPhotoDialog } from '../contexts/photos/components/new-photo-dialog';
+import { NewAlbumDialog } from '../contexts/albums/components/new-album-dialog';
 
 interface MainHeaderProps extends ComponentProps<typeof Container> {}
 

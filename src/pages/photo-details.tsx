@@ -1,11 +1,12 @@
+import { useTransition } from 'react';
 import { useParams } from 'react-router';
 
 import Container from '../components/primitives/container';
 import Text from '../components/primitives/text';
 import Skeleton from '../components/primitives/skeleton';
-import { PhotoNavigator } from '../contexts/photos/components/photo-navigator';
 import { ImagePreview } from '../components/image-preview';
 import Button from '../components/primitives/button';
+import { PhotoNavigator } from '../contexts/photos/components/photo-navigator';
 import { SelectableAlbumList } from '../contexts/albums/components/selectable-album-list';
 import {
   usePhoto,
@@ -13,9 +14,17 @@ import {
 } from '../contexts/photos/hooks/use-photo';
 
 export function PhotoDetails() {
+  const [isDeletingPhoto, setIsDeletingPhoto] = useTransition();
+
   const { photo_id } = useParams();
-  const { photo, isLoadingPhoto, previousPhotoId, nextPhotoId } =
+  const { photo, isLoadingPhoto, previousPhotoId, nextPhotoId, deletePhoto } =
     usePhoto(photo_id);
+
+  function handleDeletePhoto() {
+    setIsDeletingPhoto(async () => {
+      await deletePhoto(photo!.id);
+    });
+  }
 
   return (
     <Container>
@@ -48,7 +57,13 @@ export function PhotoDetails() {
           )}
 
           {!isLoadingPhoto ? (
-            <Button variant="destructive">Excluir</Button>
+            <Button
+              variant="destructive"
+              onClick={handleDeletePhoto}
+              disabled={isDeletingPhoto}
+            >
+              {isDeletingPhoto ? 'Excluindo...' : 'Excluir'}
+            </Button>
           ) : (
             <Skeleton className="h-10 w-20" />
           )}

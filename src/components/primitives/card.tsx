@@ -1,5 +1,5 @@
-import { type VariantProps, tv } from 'tailwind-variants';
 import React from 'react';
+import { type VariantProps, tv } from 'tailwind-variants';
 
 export const cardVariants = tv({
   base: `rounded transition`,

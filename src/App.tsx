@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v7';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
 
 import { MainLayout } from './pages/main-layout';

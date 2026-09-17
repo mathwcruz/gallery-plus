@@ -1,5 +1,5 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
 import type { ComponentProps } from 'react';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
 import cn from 'classnames';
 
 import XIcon from '../../assets/icons/x.svg?react';

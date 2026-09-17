@@ -1,5 +1,6 @@
 import { useState, type ComponentProps } from 'react';
 import { tv } from 'tailwind-variants';
+
 import { ImagePreview } from '../../../components/image-preview';
 import { Checkbox } from '../../../components/primitives/checkbox';
 
@@ -43,7 +44,7 @@ export function SelectablePhotoImage({
     >
       <Checkbox
         size="sm"
-        checked={isSelected}
+        defaultChecked={isSelected}
         onChange={handleSelect}
         className="absolute top-1 left-1"
       />

@@ -18,9 +18,9 @@ import { SingleFileInput } from '../../../components/primitives/single-file-inpu
 import { ImagePreview } from '../../../components/image-preview';
 import Text from '../../../components/primitives/text';
 import Skeleton from '../../../components/primitives/skeleton';
-import { useAlbums } from '../../albums/hooks/use-albums';
 import { newPhotoFormSchema, type NewPhotoFormSchema } from '../schemas';
 import { usePhoto } from '../hooks/use-photo';
+import { useAlbums } from '../../albums/hooks/use-albums';
 interface NewPhotoDialogProps {
   trigger: ReactNode;
 }
@@ -28,6 +28,7 @@ interface NewPhotoDialogProps {
 export function NewPhotoDialog({ trigger }: NewPhotoDialogProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreatingPhoto, setIsCreatingPhoto] = useTransition();
+
   const { albums, isLoadingAlbums } = useAlbums();
   const { createPhoto } = usePhoto();
 

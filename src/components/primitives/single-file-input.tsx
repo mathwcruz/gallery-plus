@@ -1,3 +1,4 @@
+import { useMemo, type ComponentProps, type ReactNode } from 'react';
 import { useWatch } from 'react-hook-form';
 import { tv, type VariantProps } from 'tailwind-variants';
 
@@ -6,7 +7,6 @@ import FileImageIcon from '../../assets/icons/image.svg?react';
 
 import Icon from './icon';
 import Text, { textVariants } from './text';
-import { useMemo, type ComponentProps, type ReactNode } from 'react';
 
 export const singleFileInputVariants = tv({
   base: 'flex w-full flex-col items-center justify-center gap-1 rounded-lg border border-solid border-border-primary transition group-hover:border-border-active',

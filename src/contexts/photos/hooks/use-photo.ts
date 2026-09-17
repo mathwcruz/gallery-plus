@@ -1,10 +1,11 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
 import { api, fetcher } from '../../../helpers/api';
 import type { Photo } from '../models/photo';
 import type { NewPhotoFormSchema } from '../schemas';
-
+import usePhotoAlbum from './use-photo-albums';
 export interface PhotoDetailResponse extends Photo {
   previousPhotoId?: string;
   nextPhotoId?: string;
@@ -17,10 +18,11 @@ export function usePhoto(id?: string) {
     enabled: !!id,
   });
 
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const { managePhotoOnAlbum } = usePhotoAlbum();
 
   async function createPhoto(payload: NewPhotoFormSchema) {
-    // eslint-disable-next-line no-useless-catch
     try {
       const { data: photo } = await api.post<Photo>('/photos', {
         title: payload.title,
@@ -39,15 +41,27 @@ export function usePhoto(id?: string) {
       );
 
       if (payload.albumIds && payload.albumIds.length > 0) {
-        await api.put(`/photos/${photo.id}/albums`, {
-          albumsIds: payload.albumIds,
-        });
+        await managePhotoOnAlbum(photo.id, payload.albumIds);
       }
 
       queryClient.invalidateQueries({ queryKey: ['photos'] });
-      toast.success('Foto crida com sucesso');
+      toast.success('Foto salva com sucesso');
     } catch (error) {
-      toast.error('Erro ao criar foto');
+      toast.error('Erro ao enviar a foto');
+      throw error;
+    }
+  }
+
+  async function deletePhoto(photoId: string) {
+    try {
+      await api.delete(`/photos/${photoId}`);
+
+      toast.success('Foto excluída com sucesso');
+
+      navigate('/');
+    } catch (error) {
+      toast.error('Erro ao excluir a foto');
+
       throw error;
     }
   }
@@ -58,5 +72,6 @@ export function usePhoto(id?: string) {
     previousPhotoId: data?.previousPhotoId,
     isLoadingPhoto: isLoading,
     createPhoto,
+    deletePhoto,
   };
 }

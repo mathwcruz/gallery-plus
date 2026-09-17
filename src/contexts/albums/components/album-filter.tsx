@@ -8,12 +8,12 @@ import Text from '../../../components/primitives/text';
 import Skeleton from '../../../components/primitives/skeleton';
 
 interface AlbumFilterProps extends ComponentProps<'div'> {
-  albums: Album[];
+  album: Album[];
   loading?: boolean;
 }
 
 export function AlbumFilter({
-  albums,
+  album,
   loading,
   className,
   ...props
@@ -40,7 +40,7 @@ export function AlbumFilter({
               Todos
             </Button>
 
-            {albums.map((album) => (
+            {album.map((album) => (
               <Button
                 key={album.id}
                 type="button"

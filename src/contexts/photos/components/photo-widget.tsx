@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+
 import { ImagePreview } from '../../../components/image-preview';
 import Badge from '../../../components/primitives/badge';
 import {
@@ -40,7 +41,7 @@ export function PhotoWidget({ photo, loading }: PhotoWidgetProps) {
         <div className="flex min-h-5.5 gap-1">
           {!loading ? (
             <>
-              {photo.albums.slice(0, 1).map((album) => (
+              {photo.albums?.slice(0, 1).map((album) => (
                 <Badge className="truncate" size="xs" key={album.id}>
                   {album.title}
                 </Badge>
@@ -62,6 +63,7 @@ export function PhotoWidget({ photo, loading }: PhotoWidgetProps) {
           )}
         </div>
       </div>
+
       {!loading ? (
         <Link
           to={`/photos/${photo.id}`}

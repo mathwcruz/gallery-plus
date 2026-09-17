@@ -1,9 +1,11 @@
 import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
+import cx from 'classnames';
+
+import SpinnerIcon from '../../assets/icons/spinner.svg?react';
+
 import Icon from './icon';
 import Text from './text';
-import { tv, type VariantProps } from 'tailwind-variants';
-import SpinnerIcon from '../../assets/icons/spinner.svg?react';
-import cx from 'classnames';
 
 export const buttonVariants = tv({
   base: 'group flex cursor-pointer items-center justify-center gap-1 rounded transition',
