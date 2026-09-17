@@ -76,7 +76,7 @@ export function NewPhotoDialog({ trigger }: NewPhotoDialogProps) {
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <DialogHeader>Adicionar foto</DialogHeader>
 
-          <DialogBody className="flex flex-col gap-5">
+          <DialogBody className="flex flex-col gap-5 text-accent-paragraph">
             <TextInput
               placeholder="Adicione um título"
               maxLength={255}
@@ -102,7 +102,9 @@ export function NewPhotoDialog({ trigger }: NewPhotoDialogProps) {
             />
 
             <div className="space-y-3">
-              <Text variant="label-small">Selecionar álbuns</Text>
+              <Text variant="label-small" className="text-accent-paragraph">
+                Selecionar álbuns
+              </Text>
 
               <div className="flex flex-wrap gap-3">
                 {!isLoadingAlbums &&

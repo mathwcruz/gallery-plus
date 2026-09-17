@@ -46,7 +46,9 @@ export function PhotoList({ photos, loading }: PhotoListProps) {
 
       {!loading && photos.length === 0 && (
         <div className="flex h-full items-center justify-center">
-          <Text variant="paragraph-large">Nenhuma foto disponível</Text>
+          <Text variant="paragraph-large" className="text-accent-paragraph">
+            Nenhuma foto disponível
+          </Text>
         </div>
       )}
     </div>

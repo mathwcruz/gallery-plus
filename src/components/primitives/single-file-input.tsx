@@ -128,7 +128,7 @@ export function SingleFileInput({
           {replaceBy}
 
           <div className="mt-5 flex items-center gap-3 rounded border border-solid border-border-primary p-3">
-            <Icon svg={FileImageIcon} className="h-6 w-6 fill-white" />
+            <Icon svg={FileImageIcon} className="h-6 w-6 fill-black" />
 
             <div className="flex flex-col">
               <div className="max-w-80 truncate">

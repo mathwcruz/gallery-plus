@@ -30,7 +30,11 @@ export function PhotoDetails() {
     <Container>
       <header className="mb-8 flex items-center justify-between gap-8">
         {!isLoadingPhoto ? (
-          <Text variant="heading-large" as="h2">
+          <Text
+            variant="heading-large"
+            as="h2"
+            className="text-accent-paragraph"
+          >
             {photo?.title}
           </Text>
         ) : (
@@ -70,7 +74,11 @@ export function PhotoDetails() {
         </div>
 
         <div className="py-3">
-          <Text variant="heading-medium" as="h3" className="mb-7">
+          <Text
+            variant="heading-medium"
+            as="h3"
+            className="mb-7 text-accent-paragraph"
+          >
             Álbuns
           </Text>
 

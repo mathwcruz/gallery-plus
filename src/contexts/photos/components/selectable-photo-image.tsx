@@ -1,4 +1,4 @@
-import { useState, type ComponentProps } from 'react';
+import { useEffect, useState, type ComponentProps } from 'react';
 import { tv } from 'tailwind-variants';
 
 import { ImagePreview } from '../../../components/image-preview';
@@ -26,7 +26,11 @@ export function SelectablePhotoImage({
   className,
   ...props
 }: SelectablePhotoImageProps) {
-  const [isSelected, setIsSelected] = useState(selected);
+  const [isSelected, setIsSelected] = useState(Boolean(selected));
+
+  useEffect(() => {
+    setIsSelected(Boolean(selected));
+  }, [selected]);
 
   function handleSelect() {
     const newValue = !isSelected;
@@ -44,7 +48,7 @@ export function SelectablePhotoImage({
     >
       <Checkbox
         size="sm"
-        defaultChecked={isSelected}
+        checked={isSelected}
         onChange={handleSelect}
         className="absolute top-1 left-1"
       />

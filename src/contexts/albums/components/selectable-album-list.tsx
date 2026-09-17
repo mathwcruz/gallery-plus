@@ -12,29 +12,27 @@ interface SelectableAlbumListProps {
 }
 
 export function SelectableAlbumList({ photo }: SelectableAlbumListProps) {
-  const [isUpdatingPhoto, setIsUpdatingPhoto] = useTransition();
+  const [isUpdatingPhoto, startTransition] = useTransition();
 
   const { albums, isLoadingAlbums } = useAlbums();
   const { managePhotoOnAlbum } = usePhotoAlbum();
 
   function isChecked(albumId: string) {
-    return photo?.album?.some((album) => album.id === albumId);
+    return photo?.albums?.some((album) => album.id === albumId) ?? false;
   }
 
   async function handlePhotoOnAlbum(albumId: string) {
-    let albumIds: string[] = [];
+    if (!photo) return;
 
-    if (isChecked(albumId)) {
-      albumIds = photo.album
-        ?.filter((album) => album.id !== albumId)
-        ?.map((album) => album.id);
-    } else {
-      albumIds = [...photo.album.map((album) => album.id), albumId];
+    const nextAlbumIds = isChecked(albumId)
+      ? (photo.albums ?? [])
+          .filter((album) => album.id !== albumId)
+          .map((album) => album.id)
+      : [...(photo.albums ?? []).map((album) => album.id), albumId];
 
-      setIsUpdatingPhoto(async () => {
-        await managePhotoOnAlbum(photo.id, albumIds);
-      });
-    }
+    startTransition(() => {
+      void managePhotoOnAlbum(photo.id, nextAlbumIds);
+    });
   }
 
   return (
@@ -44,14 +42,18 @@ export function SelectableAlbumList({ photo }: SelectableAlbumListProps) {
           {albums.map((album, index) => (
             <li key={album.id}>
               <div className="flex items-center justify-between gap-1">
-                <Text variant="paragraph-large" className="truncate">
+                <Text
+                  variant="paragraph-large"
+                  className="truncate text-accent-paragraph"
+                >
                   {album.title}
                 </Text>
 
                 <Checkbox
-                  defaultChecked={isChecked(album.id)}
-                  onChange={() => handlePhotoOnAlbum(album.id)}
+                  checked={isChecked(album.id)}
                   disabled={isUpdatingPhoto}
+                  loading={isUpdatingPhoto}
+                  onChange={() => handlePhotoOnAlbum(album.id)}
                 />
               </div>
 

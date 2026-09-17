@@ -66,7 +66,10 @@ export function DialogHeader({
         {...props}
       >
         <DialogPrimitive.Title>
-          <Text variant="heading-medium" className="flex-1">
+          <Text
+            variant="heading-medium"
+            className="flex-1 text-accent-paragraph"
+          >
             {children}
           </Text>
         </DialogPrimitive.Title>

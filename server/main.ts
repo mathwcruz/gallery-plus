@@ -10,8 +10,8 @@ import { photosRoutes } from './photos/photos-routes';
 import { albumsRoutes } from './albums/albums-routes';
 
 // Simulated API latency — useful for testing loading states on the frontend.
-// Defaults to 1500ms; set API_DELAY_MS=0 to disable.
-const apiDelayMs = parseInt(process.env.API_DELAY_MS || '1500');
+// Defaults to 700ms; set API_DELAY_MS=0 to disable.
+const apiDelayMs = parseInt(process.env.API_DELAY_MS || '700ms');
 
 // Start server
 const start = async () => {

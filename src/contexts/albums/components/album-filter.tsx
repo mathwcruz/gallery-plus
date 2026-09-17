@@ -25,7 +25,9 @@ export function AlbumFilter({
       className={cx('flex items-center gap-3.5 overflow-x-auto', className)}
       {...props}
     >
-      <Text variant="heading-small">Álbuns</Text>
+      <Text variant="heading-small" className="text-accent-paragraph">
+        Álbuns
+      </Text>
 
       <div className="flex gap-3">
         {!loading ? (

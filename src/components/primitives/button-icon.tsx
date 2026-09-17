@@ -34,9 +34,9 @@ export const buttonIconVariants = tv({
 export const buttonIconIconVariants = tv({
   variants: {
     variant: {
-      primary: 'fill-white',
-      secondary: 'fill-white',
-      ghost: 'fill-white',
+      primary: 'fill-accent-paragraph',
+      secondary: 'fill-accent-paragraph',
+      ghost: 'fill-accent-paragraph',
     },
     size: {
       md: 'h-6 w-6',

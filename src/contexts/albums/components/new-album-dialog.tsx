@@ -83,7 +83,11 @@ export function NewAlbumDialog({ trigger }: NewAlbumDialogProps) {
             />
 
             <div className="space-y-3">
-              <Text variant="label-small" as="div" className="mb-3">
+              <Text
+                variant="label-small"
+                as="div"
+                className="mb-3 text-accent-paragraph"
+              >
                 Fotos cadastradas
               </Text>
 
@@ -118,7 +122,10 @@ export function NewAlbumDialog({ trigger }: NewAlbumDialogProps) {
                 <div className="flex w-full flex-col items-center justify-center gap-3">
                   <SelectCheckboxIllustration />
 
-                  <Text variant="paragraph-medium" className="text-center">
+                  <Text
+                    variant="paragraph-medium"
+                    className="text-center text-accent-paragraph"
+                  >
                     Nenhuma foto disponível para seleção
                   </Text>
                 </div>

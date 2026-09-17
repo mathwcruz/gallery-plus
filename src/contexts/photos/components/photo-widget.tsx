@@ -31,7 +31,7 @@ export function PhotoWidget({ photo, loading }: PhotoWidgetProps) {
 
       <div className="flex flex-col gap-2">
         {!loading ? (
-          <Text variant="paragraph-large" className="truncate">
+          <Text variant="paragraph-large" className="text-accent-paragraph">
             {photo.title}
           </Text>
         ) : (
